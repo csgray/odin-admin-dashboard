@@ -12,6 +12,9 @@
 
 body {
     height: 100vh;
+
+    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    line-height: 1.5;
     
     display: grid;
     grid-template-rows: 1fr 4fr;
@@ -19,8 +22,63 @@ body {
 }
 
 .sidebar {
+    padding: 2vh 2vw;
+
     background-color: var(--accent-color);
+    color: var(--primary-color);
+
     grid-area: 1 / 1 / -1 / 2;
+    display: grid;
+    place-content: start;
+    align-items: start;
+    gap: 5vh;
+
+    & .branding {
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        grid-auto-flow: column;
+        gap: 1vw;
+        align-items: center;
+
+        & svg {
+            fill: var(--primary-color);
+            height: 2rem;
+        }
+
+        & div {
+            font-size: 2rem;
+            font-weight: bolder;
+
+            position: relative;
+            top: .25rem;
+        }
+    }
+
+    & ul {
+        list-style-type: none;
+
+        display: grid;
+        gap: 2vh;
+
+        & li {
+            display: grid;
+            grid-template-columns: 1fr 5fr;
+            grid-auto-flow: column;
+            justify-content: start;
+            gap: 1vw;
+            align-items: baseline;
+
+            font-size: 1.5rem;
+            font-weight: bold;
+    
+            & svg {
+                fill: var(--primary-color);
+                height: 1.20rem;
+                display: inline-block;
+                justify-self: center;
+            }
+        }   
+    } 
 }
 
 .header {
