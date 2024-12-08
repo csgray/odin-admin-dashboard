@@ -82,8 +82,99 @@ body {
 }
 
 .header {
+    padding: 1vh 3vw;
+
     background-color: var(--primary-color);
+
     grid-area: 1 / 2;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+
+    & .searchbar {
+       padding: 1vw 1vh;
+
+        display: flex;
+        grid-auto-flow: column;
+        justify-content: start;
+        align-items: center;
+        gap: 1vw;
+
+        & svg {
+            height: 1rem;
+        }
+
+        & input {
+            height: 1.75rem;
+            width: 100%;
+            padding: 1rem;
+
+            background-color: var(--background-color);
+            border: none;
+            border-radius: 1rem;
+        }
+    }
+
+    & .user-info {
+        padding-right: 2vw;
+
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: end;
+        align-items: center;
+        gap: 2vw;
+
+        font-weight: bolder;
+
+        & svg {
+            height: 1rem;
+        }
+
+        & img {
+            clip-path: circle();
+        }
+    }
+
+    & .greeting {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: start;
+        align-items: center;
+        gap: 1vw;
+
+        font-weight: bold;
+
+        & img {
+            clip-path: circle();
+        }
+
+        & .greeting-text {
+            font-size: small;
+        }
+
+        & .greeting-user {
+            font-size: larger;
+        }
+    }
+
+    & .buttons {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        & button {
+            height: 2rem;
+            width: 6rem;
+
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 1rem;
+
+            font-weight: bolder;
+            justify-self: center;
+        }
+    }
 }
 
 .main-content {
