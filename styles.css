@@ -8,6 +8,15 @@
     --primary-color: rgb(255, 255, 255);
     --accent-color: rgb(54, 142, 209);
     --background-color: rgb(227, 232, 240);
+    --profile-color: rgb(132, 47, 26);
+    --body-text-color: grey;
+    --header-text-color: black;
+
+    --font-size-s: 0.800rem;
+    --font-size-1: 1.000rem;
+    --font-size-2: 1.250rem;
+    --font-size-3: 1.563rem;
+    --font-size-4: 1.953rem;
 }
 
 body {
@@ -19,6 +28,11 @@ body {
     display: grid;
     grid-template-rows: 1fr 4fr;
     grid-template-columns: 2fr 7fr;
+}
+
+img {
+    clip-path: circle();
+    object-fit: cover;
 }
 
 .sidebar {
@@ -85,10 +99,12 @@ body {
     padding: 1vh 3vw;
 
     background-color: var(--primary-color);
+    box-shadow: 0px 2px 5px grey;
+    z-index: 1; /* make the shadow appear over the content area */
 
     grid-area: 1 / 2;
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 1fr min-content;
 
     & .searchbar {
        padding: 1vw 1vh;
@@ -115,8 +131,6 @@ body {
     }
 
     & .user-info {
-        padding-right: 2vw;
-
         display: grid;
         grid-auto-flow: column;
         justify-content: end;
@@ -128,10 +142,6 @@ body {
         & svg {
             height: 1rem;
         }
-
-        & img {
-            clip-path: circle();
-        }
     }
 
     & .greeting {
@@ -142,10 +152,6 @@ body {
         gap: 1vw;
 
         font-weight: bold;
-
-        & img {
-            clip-path: circle();
-        }
 
         & .greeting-text {
             font-size: small;
@@ -159,8 +165,9 @@ body {
     & .buttons {
         display: grid;
         grid-auto-flow: column;
-        justify-content: space-evenly;
+        justify-content: end;
         align-items: center;
+        gap: 2vw;
 
         & button {
             height: 2rem;
@@ -179,4 +186,120 @@ body {
 
 .main-content {
     background-color: var(--background-color);
+    padding: 4vh 2vw;
+
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: repeat(2, min-content);
+    gap: 1vw;
+
+    & h3 {
+        font-size: var(--font-size-2);
+    }
+
+    & .projects {
+        grid-area: 1 / 1 / -1 / 2;
+
+        & .cards {
+            height: calc(100% - 30px); /* Account for the header */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+            grid-template-rows: auto;
+            gap: 2vh 2vw;   
+    
+            & .card {
+                background-color: var(--primary-color);
+                padding: 2vh 1vw;
+                border-left: 10px solid var(--profile-color);
+                border-radius: 10px;
+                box-shadow: 2px 2px 5px grey;
+        
+                color: var(--body-text-color);
+                line-height: 1.2;
+                max-inline-size: 66ch;
+
+                display: grid;
+                grid-template-rows: 1fr 4fr 1fr;
+                gap: 0.5vh;
+
+                & h4 {
+                    color: var(--header-text-color);
+                    font-size: var(--font-size-1);
+                }
+
+                & .icons {                   
+                    display: grid;
+                    grid-auto-flow: column;
+                    justify-content: end;
+                    align-items: end;
+                    gap: 2vw;
+                }
+
+                & svg {
+                    height: 1rem;
+                }
+            }
+        }
+    }
+
+    & .announcements {       
+        & h3 {
+            font-size: var(--font-size-2);
+        }
+
+        & .container {
+            background-color: var(--primary-color);
+            box-shadow: 2px 2px 5px grey;
+            padding: 2vh 1.5vw;
+            border-radius: 1vh;
+
+            & .announcement {
+                padding: 1.0vh 0.5vw;
+
+                & h5 {
+                    font-size: var(--font-size-1);
+                }
+
+                & p {
+                    font-size: var(--font-size-s);
+                    line-height: 1.2;
+                    color: var(--body-text-color);
+                }
+            }
+        }
+    }
+
+    & .trending {
+        & h3 {
+            font-size: var(--font-size-2);
+        }
+
+        & .container {
+            background-color: var(--primary-color);
+            box-shadow: 2px 2px 5px grey;
+            padding: 2vh 1.5vw;
+            border-radius: 1vh;
+
+            display: grid;
+            gap: 2vh;
+
+            font-size: var(--font-size-s);
+            line-height: 1.2;
+            color: var(--body-text-color);
+
+            & .user {
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+
+                & img {
+                    grid-area: 1 / 1 / 3 / 1;
+                }
+
+                & .username {
+                    color: var(--header-text-color);
+                }
+            }
+        }
+    }
+
 }
